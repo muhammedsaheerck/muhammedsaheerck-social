@@ -69,6 +69,6 @@ class _ScreenAuthState extends State<ScreenAuth>
         ),
         body: TabBarView(
             controller: tabController,
-            children: const [ScreenLogin(), ScreenSignUp()]));
+            children:  [ScreenLogin(), ScreenSignUp()]));
   }
 }

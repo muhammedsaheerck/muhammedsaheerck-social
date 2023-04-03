@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social/core/core_datas.dart';
+import 'package:social/presentation/auth/screen_signup.dart';
 
 import 'widgets/custom_textfield.dart';
 import 'widgets/text_field_name.dart';
@@ -11,18 +12,18 @@ class ScreenLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: Column(
+      body: ListView(
         children: [
           const SizedBox(
             height: 15,
           ),
           Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height / 1.47,
+            height: MediaQuery.of(context).size.height / 1.46,
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(25)),
             child: Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
