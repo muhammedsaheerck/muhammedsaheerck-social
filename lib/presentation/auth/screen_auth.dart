@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:social/presentation/auth/screen_login.dart';
 import 'package:social/presentation/auth/screen_signup.dart';
 
+import '../../infrastructure/news_api.dart';
+
 class ScreenAuth extends StatefulWidget {
   const ScreenAuth({super.key});
 
@@ -69,6 +71,6 @@ class _ScreenAuthState extends State<ScreenAuth>
         ),
         body: TabBarView(
             controller: tabController,
-            children:  [ScreenLogin(), ScreenSignUp()]));
+            children: const [ScreenLogin(), ScreenSignUp()]));
   }
 }

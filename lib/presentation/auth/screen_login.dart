@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social/application/home/home_provider.dart';
 import 'package:social/core/core_datas.dart';
-import 'package:social/presentation/auth/screen_signup.dart';
-
+import 'package:social/presentation/home/screen_home.dart';
+import '../../infrastructure/news_api.dart';
 import 'widgets/custom_textfield.dart';
 import 'widgets/text_field_name.dart';
 
@@ -110,7 +112,13 @@ class ScreenLogin extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                 )),
-            onPressed: () {},
+            onPressed: () async {
+              await Provider.of<HomeProvider>(context, listen: false)
+                  .getArticles();
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const ScreenHome(),
+              ));
+            },
             child: const Text(
               "LOGIN",
             ),
