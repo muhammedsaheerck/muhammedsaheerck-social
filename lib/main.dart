@@ -1,14 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:social/application/Auth/auth_provider.dart';
 import 'package:social/application/home/home_provider.dart';
 import 'package:social/presentation/auth/screen_auth.dart';
+import 'package:social/presentation/auth/screen_login.dart';
 import 'package:social/presentation/home/screen_home.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 

@@ -16,7 +16,7 @@ class HomeProvider extends ChangeNotifier {
     response = await NewsApiCalls().getNews();
     for (var element in response) {
       news.addAll(element.articles!);
-      log(element.articles![0].author.toString());
+      log("provid llloooog${element.articles![0].author.toString()}");
       notifyListeners();
     }
 

@@ -9,8 +9,8 @@ class NewsApiCalls {
   Future<List<NewsApiModel>> getNews() async {
     try {
       Response response = await dio.get(
-          "https://newsapi.org/v2/everything?q=tesla&from=2023-03-03&sortBy=publishedAt&apiKey=821e9aac93fc4e7992f2ff69416b5b59");
-      // log(response.data.toString());
+          "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=821e9aac93fc4e7992f2ff69416b5b59");
+      log(response.data.toString());
       // log(response.statusCode.toString());
       if (response.statusCode == 200) {
         List<NewsApiModel> newList = [];
@@ -19,7 +19,7 @@ class NewsApiCalls {
         return newList;
       }
     } on DioError catch (e) {
-      log(e.response!.data.toString());
+      log("eeeeeeeeeeeeeeeeeee${e.response!.data.toString()}");
     }
     return [];
   }
