@@ -205,13 +205,20 @@ class ScreenSignUp extends StatelessWidget {
             onPressed: () async {
               if (signUpEmailCOntroller.text.isNotEmpty &&
                   signUpPasswordCOntroller.text.isNotEmpty) {
-                await Provider.of<AuthProvider>(context, listen: false)
-                    .createUser(
-                        email: signUpEmailCOntroller.text,
-                        password: signUpPasswordCOntroller.text);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Sign Up successfull')),
-                );
+                if (_formKeySIgnUp.currentState!.validate()) {
+                  await Provider.of<AuthProvider>(context, listen: false)
+                      .createUser(
+                          email: signUpEmailCOntroller.text,
+                          password: signUpPasswordCOntroller.text);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Sign Up successfull')),
+                  );
+                  // signUpEmailCOntroller.clear();
+                  // // signUpNameCOntroller.clear();
+                  // signUpPasswordCOntroller.clear();
+                  // // signUpPhoneCOntroller.clear();
+                }
+
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //   builder: (context) => ScreenLogin(),
                 // ));

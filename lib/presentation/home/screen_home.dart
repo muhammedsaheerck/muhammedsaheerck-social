@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:social/application/Auth/auth_provider.dart';
 import 'package:social/application/home/home_provider.dart';
 import 'package:social/core/core_datas.dart';
 
@@ -10,11 +11,26 @@ class ScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue.shade900,
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Provider.of<AuthProvider>(context, listen: false)
+                      .signOut(context);
+                },
+                child: const Text(
+                  "LOGOUT",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ))
+          ],
+        ),
         body: ListView(
           children: [
             Consumer<HomeProvider>(builder: (context, valuePro, child) {
               return TextField(
-                controller: valuePro.controller,
+                  controller: valuePro.controller,
                   onChanged: (value) => valuePro.searchNews(value),
                   decoration: InputDecoration(
                       hintText: "Search in feed",

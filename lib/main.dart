@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:social/application/Auth/auth_provider.dart';
 import 'package:social/application/home/home_provider.dart';
 import 'package:social/presentation/auth/screen_auth.dart';
-import 'package:social/presentation/auth/screen_login.dart';
-import 'package:social/presentation/home/screen_home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   runApp(const MyApp());
 }
 

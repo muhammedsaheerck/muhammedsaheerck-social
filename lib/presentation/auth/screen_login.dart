@@ -168,8 +168,10 @@ class ScreenLogin extends StatelessWidget {
       if (formkey.currentState!.validate()) {
         await Provider.of<AuthProvider>(context, listen: false)
             .signInWithemail(email, pass, context);
+        signInEmailCOntroller.clear();
+        signInPasswordCOntroller.clear();
         await Provider.of<HomeProvider>(context, listen: false).getArticles();
-       
+
         // Navigator.of(context).pushReplacement(MaterialPageRoute(
         //   builder: (context) => const ScreenHome(),
         // ));

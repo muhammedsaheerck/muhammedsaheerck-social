@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social/presentation/auth/screen_auth.dart';
 
 import '../../infrastructure/auth_firebase.dart';
 import '../../presentation/home/screen_home.dart';
@@ -30,7 +31,8 @@ class AuthProvider extends ChangeNotifier {
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const ScreenAuth()));
     } catch (e) {
       log(e.toString());
     }
@@ -53,7 +55,20 @@ class AuthProvider extends ChangeNotifier {
 
       log(e.code.toString());
     }
+
     notifyListeners();
+  }
+
+  //sign out
+  Future<void> signOut(context) async {
+    try {
+      await AuthFire().signOut();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const ScreenAuth()));
+      notifyListeners();
+    } on FirebaseAuthException catch (e) {
+      log(e.message.toString());
+    }
   }
 
   // Future<void> signUPWithemail(String email, String password, context) async {
